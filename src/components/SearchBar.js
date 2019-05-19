@@ -1,15 +1,21 @@
+
 import React from 'react';
 
-const SearchBar = () => {
+const SearchBar  = (props) => {
+
+    let executeFormSubmission = (e) => {
+        e.preventDefault();
+        props.handleFormSubmit(props.term);
+
+    }
+
     return(
-        <div className="ui segment">
-            <form className="ui form">
-                <label htmlFor="searchTerm" className="ui fluid icon input">
-                    <input type="text" placeholder="Search Term" />
-                    <i className="search icon"></i>
-                </label>
-            </form>
-        </div>
+        <form className="ui form" onSubmit={executeFormSubmission.bind(this)}>
+            <label htmlFor="searchTerm" className="ui fluid icon input">
+                <input type="text" placeholder="Search Term" onChange={props.handleUserInput}/>
+                <i className="search icon"></i>
+            </label>
+        </form>
     )
 }
 
